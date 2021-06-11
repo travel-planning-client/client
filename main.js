@@ -129,10 +129,13 @@ const delPass = (id) =>{
 }
 
 const planPage = () =>{
-    console.log("test")
+    getCovid()
+    checkHoliday()
     $('#plan-block').hide()
     $('#login-block').hide()
     $('#plan-form-block').show()
+    $('#edit-form-block').hide()
+
 }
 
 const postPlan = () => {
