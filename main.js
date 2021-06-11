@@ -249,15 +249,26 @@ const checkHoliday = () =>{
 }
 
 const delPlan = (id) =>{
-    $.ajax({
-        type: "DELETE",
-        url: SERVER+`travels/${id}`,
-        headers: {access_token: localStorage.access_token}
+    swal({
+        title: "Sure Delete",
+        text: `Delete Todo ${name} ?`,
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
     })
-    .done(res => {
-        auth()
-    })
-    .fail(err => {console.log(err)})
+    .then((willDelete) => {
+        if (willDelete) {
+            $.ajax({
+                type: "DELETE",
+                url: SERVER+`travels/${id}`,
+                headers: {access_token: localStorage.access_token}
+            })
+            .done(res => {
+                auth()
+            })
+            .fail(err => {console.log(err)})
+        }
+    });
 }
 
 const editPage = (id) => {
